@@ -29,6 +29,7 @@ var userDiThree = singleDiGenerator();
 var cpuDiOne = singleDiGenerator();
 var cpuDiTwo = singleDiGenerator();
 var cpuDiThree = singleDiGenerator();
+// WHERE YOU WILL USE JQUERY TO APPEND THE INDIVIDUAL DICEROLLS TO YOUR DOM
 
 yourDice.push(userDiOne);
 yourDice.push(userDiTwo);
@@ -88,9 +89,10 @@ var scoreCalculator = function(arr) {
     }
     return score;
 }
-
 var yourScore = scoreCalculator(yourDice);
 var cpuScore = scoreCalculator(cpuDice);
+$('#user-score').text(yourScore);
+$('#computer-score').text(cpuScore);
 
 console.log(yourDice);
 console.log(yourScore);
