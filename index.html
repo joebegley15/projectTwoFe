@@ -74,8 +74,11 @@
     <div class="row">
       <div class="col-md-4">
           <div class="well">
-            <h5>Scoreboard</h5>
-            <button type="button" class="btn btn-default btn-lg" onclick="runScores()">Play Cee-lo</button>
+            <h2>Scoreboard</h2>
+            <button type="button" class="btn btn-default btn-lg" id="game-start-button">Play Cee-lo</button>
+            <span id="both-button-span">
+            <span id="user-button-span">
+            <span id="cpu-button-span">
             <h3> User Score: </h3>
             <div id="user-score"></div>
             <h3> Computer Score: </h3>
@@ -84,8 +87,18 @@
       </div>
       <div class="col-md-8">
           <div class="well">
-            <h5>Sidebar</h5>
-            <p> </p>
+            <h5>Player One Score</h5>
+            <span id="user-di-one"></span>
+            <span id="user-di-two"></span>
+            <span id="user-di-three"></span>
+          </div>
+      </div>
+      <div class="col-md-8">
+          <div class="well">
+            <h5>Computer Score</h5>
+            <span id="cpu-di-one"></span>
+            <span id="cpu-di-two"></span>
+            <span id="cpu-di-three"></span>
           </div>
       </div>
       <div class="col-md-8">

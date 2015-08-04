@@ -20,81 +20,115 @@ var singleDiGenerator = function() {
     }
 }
 
-var yourDice = [];
-var cpuDice = [];
-
-var userDiOne = singleDiGenerator();
-var userDiTwo = singleDiGenerator();
-var userDiThree = singleDiGenerator();
-var cpuDiOne = singleDiGenerator();
-var cpuDiTwo = singleDiGenerator();
-var cpuDiThree = singleDiGenerator();
-// WHERE YOU WILL USE JQUERY TO APPEND THE INDIVIDUAL DICEROLLS TO YOUR DOM
-
-yourDice.push(userDiOne);
-yourDice.push(userDiTwo);
-yourDice.push(userDiThree);
-cpuDice.push(cpuDiOne);
-cpuDice.push(cpuDiTwo);
-cpuDice.push(cpuDiThree);
-
-
 var scoreCalculator = function(arr) {
     var sortedArr = arr.sort();
-    var score = 27;
+    var score = "Please Roll Again!";
     if ((sortedArr[0] == 4) && (sortedArr[1] == 5) && (sortedArr[2] == 6)) {
-        score = 13;
+        score = 14;
     }
     else if ((sortedArr[0] == 6) && (sortedArr[1] == 6) && (sortedArr[2] == 6)) {
-        score = 12;
+        score = 13;
     }
     else if ((sortedArr[0] == 5) && (sortedArr[1] == 5) && (sortedArr[2] == 5)) {
-        score = 11;
+        score = 12;
     }
     else if ((sortedArr[0] == 4) && (sortedArr[1] == 4) && (sortedArr[2] == 4)) {
-        score = 10;
+        score = 11;
     }
     else if ((sortedArr[0] == 3) && (sortedArr[1] == 3) && (sortedArr[2] == 3)) {
+        score = 10;
+    }
+    else if ((sortedArr[0] == 2) && (sortedArr[1] == 2) && (sortedArr[2] == 2)) {
         score = 9;
     }
-    else if ((sortedArr[0] == 2) && (sortedArr[1] == 2) && (sortedArr[2] == 2)) {
-        score = 8;
-    }
-    else if ((sortedArr[0] == 2) && (sortedArr[1] == 2) && (sortedArr[2] == 2)) {
-        score = 8;
-    }
     else if ((sortedArr[0] == 1) && (sortedArr[1] == 1) && (sortedArr[2] == 1)) {
-        score = 7;
+        score = 8;
     }
     else if ((sortedArr[0] == sortedArr[1]) && (sortedArr[2]== 6)) {
-        score = 6;
+        score = 7;
     }
     else if ((sortedArr[0] == sortedArr[1]) && (sortedArr[2]== 5) || (sortedArr[2] == sortedArr[1]) && (sortedArr[0] == 5)) {
-        score = 5;
+        score = 6;
     }
     else if ((sortedArr[0] == sortedArr[1]) && (sortedArr[2]== 4) || (sortedArr[2] == sortedArr[1]) && (sortedArr[0] == 4)) {
-        score = 4;
+        score = 5;
     }
     else if ((sortedArr[0] == sortedArr[1]) && (sortedArr[2]== 3) || (sortedArr[2] == sortedArr[1]) && (sortedArr[0] == 3)) {
-        score = 3;
+        score = 4;
     }
     else if ((sortedArr[0] == sortedArr[1]) && (sortedArr[2]== 2) || (sortedArr[2] == sortedArr[1]) && (sortedArr[0] == 2)) {
-        score = 2;
+        score = 3;
     }
     else if ((sortedArr[0] == sortedArr[1]) && (sortedArr[2]== 1) || (sortedArr[2] == sortedArr[1]) && (sortedArr[0] == 1)) {
-        score = 1;
+        score = 2;
     }
     else if ((sortedArr[0] == 1) && (sortedArr[1] == 2) && (sortedArr[2] == 3)) {
-        score = 0;
+        score = 1;
     }
     return score;
 }
-var yourScore = scoreCalculator(yourDice);
-var cpuScore = scoreCalculator(cpuDice);
-$('#user-score').text(yourScore);
-$('#computer-score').text(cpuScore);
 
-console.log(yourDice);
-console.log(yourScore);
-console.log(cpuDice);
-console.log(cpuScore);
+function userRoll() {
+    var yourDice = [];
+
+    var userDiOne = singleDiGenerator();
+    var userDiTwo = singleDiGenerator();
+    var userDiThree = singleDiGenerator();
+
+    yourDice.push(userDiOne);
+    yourDice.push(userDiTwo);
+    yourDice.push(userDiThree);
+
+    var yourScore = scoreCalculator(yourDice);
+
+    $('#user-score').text(yourScore);
+
+    $('#user-di-one').text(userDiOne);
+    $('#user-di-two').text(userDiTwo);
+    $('#user-di-three').text(userDiThree);
+
+    return yourScore;
+};
+
+function computerRoll() {
+    var cpuDice = [];
+
+    var cpuDiOne = singleDiGenerator();
+    var cpuDiTwo = singleDiGenerator();
+    var cpuDiThree = singleDiGenerator();
+
+    cpuDice.push(cpuDiOne);
+    cpuDice.push(cpuDiTwo);
+    cpuDice.push(cpuDiThree);
+
+
+    var cpuScore = scoreCalculator(cpuDice);
+
+
+    $('#computer-score').text(cpuScore);
+
+    $('#cpu-di-one').text(cpuDiOne);
+    $('#cpu-di-two').text(cpuDiTwo);
+    $('#cpu-di-three').text(cpuDiThree);
+
+    return cpuScore;
+};
+
+
+function playGame(){
+    userRoll();
+    computerRoll();
+}
+
+
+
+$(document).ready(function(){
+
+    $('#game-start-button').on("click", playGame);
+
+});
+
+// console.log(yourDice);
+// console.log(yourScore);
+// console.log(cpuDice);
+// console.log(cpuScore);
