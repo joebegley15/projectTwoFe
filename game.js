@@ -1,3 +1,7 @@
+var userTotal = 0;
+var cpuTotal = 0;
+
+
 var singleDiGenerator = function() {
     var num = (Math.random()*6);
     if (num < 1) {
@@ -88,6 +92,7 @@ function userRoll() {
     $('#user-di-three').text(userDiThree);
 
     return yourScore;
+
 };
 
 function computerRoll() {
@@ -116,9 +121,22 @@ function computerRoll() {
 
 
 function playGame(){
-    userRoll();
-    computerRoll();
+    var cpuScore, userScore;
+    userScore = userRoll();
+    cpuScore = computerRoll();
+    console.log(userScore);
+    if (userScore > cpuScore) {
+        userTotal++;
+        $('#user-total').text(userTotal);
+    }
+    if (userScore < cpuScore) {
+        cpuTotal++;
+        $('#cpu-total').text(cpuTotal);
+    }
 }
+
+$('#user-total').text(userTotal);
+$('#cpu-total').text(cpuTotal);
 
 
 
