@@ -93,7 +93,7 @@ function userRoll() {
     $('#user-di-three').text(userDiThree);
 
     CeeLoo.$yourDice = yourDice;
-    CeeLoo.$userTotal = yourScore
+    CeeLoo.$userTotal = yourScore;
 
     return yourScore;
 

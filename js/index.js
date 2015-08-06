@@ -1,6 +1,5 @@
 //jQuery.ajax
 var CeeLoo = CeeLoo || {};
- debugger;
 $(function() {
   'use strict';
   var gameWatcher;
@@ -23,25 +22,6 @@ $(function() {
       localStorage.setItem('token', data.token);
     }).fail(function(jqxhr, textStatus, errorThrown){
       $('#result').val('registration failed');
-    });
-  });
-
-  $('#login').on('click', function(e) {
-    $.ajax(sa + '/login', {
-      contentType: 'application/json',
-      processData: false,
-      data: JSON.stringify({
-        credentials: {
-          email: $('#email').val(),
-          password: $('#password').val()
-        }
-      }),
-      dataType: 'json',
-      method: 'POST'
-    }).done(function(data, textStatus, jqxhr){
-      localStorage.setItem('token', data.token);
-    }).fail(function(jqxhr, textStatus, errorThrown){
-      $('#result').val('login failed');
     });
   });
 
@@ -106,6 +86,7 @@ $(function() {
       }
     }).done(function(data){
       $('#result').val(JSON.stringify(data));
+      getWinLoss();
     }).fail(function(data){
       $('#result').val(JSON.stringify("Failed"));
     });
@@ -133,6 +114,51 @@ $(function() {
     }).fail(function(jqxhr, textStatus, errorThrown){
       $('#result').val('move failed');
     });
+  });
+
+  var getWinLoss = function () {
+    var userId = localStorage.getItem('userId');
+
+    $.ajax(sa + '/users/' + userId, {
+      dataType: 'json',
+      method: 'GET',
+      headers: {
+        Authorization: 'Token token=' + localStorage['token']
+      }
+    }).done(function(data, textStatus, jqxhr){
+      debugger;
+      console.log(data);
+      $('#user-lifetime').html(JSON.stringify(data.user.wins));
+      $('#cpu-lifetime').html(JSON.stringify(data.user.losses));
+
+    }).fail(function(jqxhr, textStatus, errorThrown){
+      $('#result').val('list failed');
+    });
+  };
+
+  var loginHandler = function () {
+    $.ajax(sa + '/login', {
+      contentType: 'application/json',
+      processData: false,
+      data: JSON.stringify({
+        credentials: {
+          email: $('#email').val(),
+          password: $('#password').val()
+        }
+      }),
+      dataType: 'json',
+      method: 'POST'
+    }).done(function(data, textStatus, jqxhr){
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('userId', data.id);
+      getWinLoss();
+    }).fail(function(jqxhr, textStatus, errorThrown){
+      $('#result').val('login failed');
+    });
+  };
+
+  $('#login').on('click', function(e) {
+    loginHandler();
   });
 });
 
