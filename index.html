@@ -26,29 +26,15 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-          <li><a href="#">Link</a></li> -->
-          <!-- <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
-          </li> -->
         </ul>
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Email">
+            <input id="email" type="text" class="form-control" placeholder="Email">
             <input type="text" class="form-control" placeholder="Username">
-            <input type="text" class="form-control" placeholder="Password">
+            <input id="password"type="text" class="form-control" placeholder="Password">
           </div>
-          <button type="Login" class="btn btn-default">Login</button>
-          <button type="Register" class="btn btn-default">Register</button>
+          <button id="login" type="button" class="btn btn-default">Login</button>
+          <button id="register" type="button" class="btn btn-default">Register</button>
         </form>
         <!-- <ul class="nav navbar-nav navbar-right">
           <li><a href="#">Link</a></li>
@@ -103,11 +89,15 @@
       <div class="col-md-8">
           <div class="well">
             <h5>The Rules</h5>
-            <p>Cee-lo is a gambling game. The name is a transliteration from the Chinese name 四五六，which means four-five-six. The reason for the name is that four-five-six is the best roll you can have in the game.</p>
+            <p>Cee-lo is a gambling game. The name is a transliteration of the Chinese name 四五六，which means four-five-six. The reason for the name is that four-five-six is the best roll you can have in the game.</p>
             <p>The next best rolls are triples. Three sixes beats three five's. Three fives beats three fours, and so on. </p>
             <p>Next are doubles. Doubles are always trumped by triples. If you roll two of the same dice and another number, your score is the number, If you roll two ones and a five. Your score is a five. Two twos and a one yiels a score of one. A six beats a five, a five beats a four, and so on. </p>
             <p>Finally is one-two-three. This is the worst roll in the game. It cannot win.</p>
             <p> So, four-five-six always wins. Triples beat doubles, but there is an ordinal ranking within them. A win is a win. Winning with triples yields the same as winning with doubles. Now, let's play! </p>
+            <label for="result">Result</label>
+            <textarea id="result"></textarea>
+            <label for="token">Token</label>
+            <textarea id="token"></textarea>
           </div>
       </div>
     </div>
@@ -115,7 +105,9 @@
   <footer id="footer"></footer>
     <!-- Latest compiled and minified JavaScript -->
   <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-  <script src="game.js"></script>
+  <script src="js/game.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/index.js" charset="utf-8"></script>
+
 </body>
 </html>
