@@ -20,7 +20,7 @@ $(function() {
       dataType: 'json',
       method: 'POST'
     }).done(function(data, textStatus, jqxhr){
-      $('#result').val(JSON.stringify(data));
+      localStorage.setItem('token', data.token);
     }).fail(function(jqxhr, textStatus, errorThrown){
       $('#result').val('registration failed');
     });
@@ -39,7 +39,7 @@ $(function() {
       dataType: 'json',
       method: 'POST'
     }).done(function(data, textStatus, jqxhr){
-      $('#token').val(data.token);
+      localStorage.setItem('token', data.token);
     }).fail(function(jqxhr, textStatus, errorThrown){
       $('#result').val('login failed');
     });
@@ -50,7 +50,7 @@ $(function() {
       dataType: 'json',
       method: 'GET',
       headers: {
-        Authorization: 'Token token=' + $('#token').val()
+        Authorization: 'Token token=' + localStorage['token']
       }
     }).done(function(data, textStatus, jqxhr){
       $('#result').val(JSON.stringify(data));
@@ -67,7 +67,7 @@ $(function() {
       dataType: 'json',
       method: 'POST',
       headers: {
-        Authorization: 'Token token=' + $('#token').val()
+        Authorization: 'Token token=' + localStorage['token']
       }
     }).done(function(data, textStatus, jqxhr){
       $('#result').val(JSON.stringify(data));
@@ -81,7 +81,7 @@ $(function() {
       dataType: 'json',
       method: 'GET',
       headers: {
-        Authorization: 'Token token=' + $('#token').val()
+        Authorization: 'Token token=' + localStorage['token']
       }
     }).done(function(data, textStatus, jqxhr){
       $('#result').val(JSON.stringify(data));
@@ -93,18 +93,21 @@ $(function() {
   $("#game-start-button").on('click', function(){
     $.ajax(sa + '/games/', {
       method: 'POST',
+      headers: {
+        Authorization: 'Token token=' + localStorage['token']
+      },
       data: {
         game: {
           user_dice: CeeLoo.$yourDice,
           cpu_dice: CeeLoo.$cpuDice,
-          player_score: Number(CeeLoo.$userTotal),
-          cpu_score: Number(CeeLoo.$cpuTotal)
+          player_score: CeeLoo.$userTotal,
+          cpu_score: CeeLoo.$cpuTotal
         }
       }
     }).done(function(data){
-      console.log("Created Game");
+      $('#result').val(JSON.stringify(data));
     }).fail(function(data){
-      console.error(data);
+      $('#result').val(JSON.stringify("Failed"));
     });
   });
 
@@ -123,7 +126,7 @@ $(function() {
       dataType: 'json',
       method: 'PATCH',
       headers: {
-        Authorization: 'Token token=' + $('#token').val()
+        Authorization: 'Token token=' + localStorage['token']
       }
     }).done(function(data, textStatus, jqxhr){
       $('#result').val(JSON.stringify(data));

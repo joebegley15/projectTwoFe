@@ -93,6 +93,7 @@ function userRoll() {
     $('#user-di-three').text(userDiThree);
 
     CeeLoo.$yourDice = yourDice;
+    CeeLoo.$userTotal = yourScore
 
     return yourScore;
 
@@ -120,6 +121,7 @@ function computerRoll() {
     $('#cpu-di-three').text(cpuDiThree);
 
     CeeLoo.$cpuDice = cpuDice;
+    CeeLoo.$cpuTotal = cpuScore;
 
     return cpuScore;
 };
@@ -140,8 +142,7 @@ function playGame(){
     }
 }
 
-CeeLoo.$userTotal = userTotal;
-CeeLoo.$cpuTotal = cpuTotal;
+
 
 $('#user-total').text(userTotal);
 $('#cpu-total').text(cpuTotal);
