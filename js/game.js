@@ -93,7 +93,7 @@ function userRoll() {
     $('#user-di-three').text(userDiThree);
 
     CeeLoo.$yourDice = yourDice;
-    CeeLoo.$userTotal = yourScore;
+    CeeLoo.$userScore = yourScore;
 
     return yourScore;
 
@@ -121,7 +121,7 @@ function computerRoll() {
     $('#cpu-di-three').text(cpuDiThree);
 
     CeeLoo.$cpuDice = cpuDice;
-    CeeLoo.$cpuTotal = cpuScore;
+    CeeLoo.$cpuScore = cpuScore;
 
     return cpuScore;
 };
@@ -129,8 +129,19 @@ function computerRoll() {
 
 function playGame(){
     var cpuScore, userScore;
-    userScore = userRoll();
-    cpuScore = computerRoll();
+    // These are temporary variables to be used to determine who had the invalid rolls.
+    if (CeeLoo.$userScore == "Please Roll Again!") {
+        userScore = userRoll();
+        cpuScore = cpuScore;
+    }
+    else if (CeeLoo.$cpuScore == "Please Roll Again!") {
+        cpuScore = computerRoll();
+        userScore = userScore;
+    }
+    else {
+        userScore = userRoll();
+        cpuScore = computerRoll();
+    }
     console.log(userScore);
     if (userScore > cpuScore) {
         userTotal++;

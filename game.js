@@ -122,8 +122,19 @@ function computerRoll() {
 
 function playGame(){
     var cpuScore, userScore;
-    userScore = userRoll();
-    cpuScore = computerRoll();
+    // These are temporary variables to be used to determine who had the invalid rolls.
+    if (userScore == "Please Roll Again!") {
+        userScore = userRoll();
+        cpuScore = cpuScore;
+    }
+    else if (cpuScore == "Please Roll Again!") {
+        cpuScore = computerRoll();
+        userScore = userScore;
+    }
+    else {
+        userScore = userRoll();
+        cpuScore = computerRoll();
+    }
     console.log(userScore);
     if (userScore > cpuScore) {
         userTotal++;

@@ -80,8 +80,8 @@ $(function() {
         game: {
           user_dice: CeeLoo.$yourDice,
           cpu_dice: CeeLoo.$cpuDice,
-          player_score: CeeLoo.$userTotal,
-          cpu_score: CeeLoo.$cpuTotal
+          player_score: CeeLoo.$userScore,
+          cpu_score: CeeLoo.$cpuScore
         }
       }
     }).done(function(data){
