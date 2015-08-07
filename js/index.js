@@ -4,7 +4,7 @@ $(function() {
   'use strict';
   var gameWatcher;
   // var sa = 'https://young-citadel-2431.herokuapp.com';
-  var sa = 'http://localhost:3000';
+  var sa = 'https://pure-spire-9680.herokuapp.com';
   $('#register').on('click', function(e) {
     $.ajax(sa + '/users', {
       contentType: 'application/json',
