@@ -70,7 +70,7 @@ $(function() {
     });
   });
 
-  $("#game-start-button").on('click', function(){
+  var postTheGame = function() {
     $.ajax(sa + '/games/', {
       method: 'POST',
       headers: {
@@ -90,6 +90,13 @@ $(function() {
     }).fail(function(data){
       $('#result').val(JSON.stringify("Failed"));
     });
+  }
+
+
+  $("#game-start-button").on('click', function(){
+    if ((CeeLoo.$userScore > 0) && (CeeLoo.$cpuScore > 0)) {
+      postTheGame();
+    }
   });
 
   $('#move').on('click', function(e){
@@ -126,7 +133,6 @@ $(function() {
         Authorization: 'Token token=' + localStorage['token']
       }
     }).done(function(data, textStatus, jqxhr){
-      debugger;
       console.log(data);
       $('#user-lifetime').html(JSON.stringify(data.user.wins));
       $('#cpu-lifetime').html(JSON.stringify(data.user.losses));

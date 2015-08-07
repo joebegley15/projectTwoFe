@@ -143,11 +143,11 @@ function playGame(){
         cpuScore = computerRoll();
     }
     console.log(userScore);
-    if (userScore > cpuScore) {
+    if (CeeLoo.$userScore > CeeLoo.$cpuScore) {
         userTotal++;
         $('#user-total').text(userTotal);
     }
-    if (userScore < cpuScore) {
+    if (CeeLoo.$userScore < CeeLoo.$cpuScore) {
         cpuTotal++;
         $('#cpu-total').text(cpuTotal);
     }
