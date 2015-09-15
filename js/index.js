@@ -101,6 +101,9 @@ $(function() {
 
   $('#move').on('click', function(e){
     $.ajax(sa + '/games/' + $('#id').val(), {
+      if (localStorage.token == undefined) {
+        return;
+      }
       contentType: 'application/json',
       processData: false,
       data: JSON.stringify({

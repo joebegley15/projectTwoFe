@@ -1,7 +1,5 @@
-p {
-  font-family: 'Montserrat', sans-serif;
+body {
+    background-image: url("http://www.planwallpaper.com/static/images/black_hd_wallpaper_black_hd_wallpaper.jpg");
+    background-size: 100%;
 }
 
-h2 {
-  font-family: 'Montserrat', sans-serif;
-}
